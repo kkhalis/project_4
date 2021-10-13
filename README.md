@@ -6,9 +6,38 @@ Welcome to your first week of work at the Disease And Treatment Agency, division
 
 Due to the recent epidemic of West Nile Virus in the Windy City, we've had the Department of Public Health set up a surveillance and control system. We're hoping it will let us learn something from the mosquito population as we collect data over time. Pesticides are a necessary evil in the fight for public health and safety, not to mention expensive! We need to derive an effective plan to deploy pesticides throughout the city, and that is **exactly** where you come in!
 
+## Contents
+* Data import, helper functions, cleaning and mapping of ordinal values
+* EDA: Previewing Data and Highlighting Outliers
+* Testing on Various Regression Models
+* Applying our selected model on the Kaggle test set
+* Conclusion
+
+## Executive Summary
+TODO: Insert brief writeup on findings
+
+
 ## Dataset
 
 The dataset, along with description, can be found here: [https://www.kaggle.com/c/predict-west-nile-virus/](https://www.kaggle.com/c/predict-west-nile-virus/).
+
+
+* [`train.csv`](./assets/train.csv): Training set consists of data from 2007, 2009, 2011, and 2013. 
+* [`test.csv`](./assets/test.csv): Test set consists of data required to predict results for 2008, 2010, 2012, and 2014.
+* [`weather.csv`](./assets/weather.csv): Weather data from 2007 to 2014 of 2 stations
+* [`spray.csv`](./assets/spray.csv): GIS data of spraying efforts in 2011 and 2013 
+
+### Data Dictionary
+You can access the data dictionary, split into markdown format [*here*](https://github.com/kkhalis/project_4/blob/master/DataDictionary.md).
+
+You can also access the detailed description of weather info in the Data Dictionary [*here*](https://github.com/kkhalis/project_4/blob/master/assets/noaa_weather_qclcd_documentation.pdf)
+
+
+
+## Conclusion
+
+TODO: Insert writeup of cost-analysis and conclusion here.
+
 
 **This is also where you will be submitting your code for evaluation**. The public leaderboard uses roughly 30% of the dataset to score an AUC (Area Under Curve) metric.
 
