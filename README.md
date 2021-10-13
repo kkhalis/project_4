@@ -7,11 +7,11 @@ Welcome to your first week of work at the Disease And Treatment Agency, division
 Due to the recent epidemic of West Nile Virus in the Windy City, we've had the Department of Public Health set up a surveillance and control system. We're hoping it will let us learn something from the mosquito population as we collect data over time. Pesticides are a necessary evil in the fight for public health and safety, not to mention expensive! We need to derive an effective plan to deploy pesticides throughout the city, and that is **exactly** where you come in!
 
 ## Contents
-* Data import, helper functions, cleaning and mapping of ordinal values
+* Data import, helper functions, cleaning and imputation of missing values
 * EDA: Previewing Data and Highlighting Outliers
-* Testing on Various Regression Models
+* Modelling
 * Applying our selected model on the Kaggle test set
-* Conclusion
+* Cost-Benefit Analysis and Conclusion
 
 ## Executive Summary
 TODO: Insert brief writeup on findings
@@ -36,7 +36,10 @@ You can also access the detailed description of weather info in the Data Diction
 
 ## Conclusion
 
-TODO: Insert writeup of cost-analysis and conclusion here.
+TODO: Insert writeup of cost-benefit analysis and conclusion here.
+
+
+## To remove below once above is completed.
 
 
 **This is also where you will be submitting your code for evaluation**. The public leaderboard uses roughly 30% of the dataset to score an AUC (Area Under Curve) metric.
