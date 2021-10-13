@@ -1,10 +1,19 @@
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Kaggle Competition - Starter
 
-## Introduction
+## Problem Statement
 
-Welcome to your first week of work at the Disease And Treatment Agency, division of Societal Cures In Epidemiology and New Creative Engineering (DATA-SCIENCE). Time to get to work!
+Due to the recent epidemic of West Nile Virus in the Windy City, the Department of Public Health set up a surveillance and control system to help collect data on mosquito numbers, presence of West Nile Virus for captured mosquitos, and weather events.
 
-Due to the recent epidemic of West Nile Virus in the Windy City, we've had the Department of Public Health set up a surveillance and control system. We're hoping it will let us learn something from the mosquito population as we collect data over time. Pesticides are a necessary evil in the fight for public health and safety, not to mention expensive! We need to derive an effective plan to deploy pesticides throughout the city, and that is **exactly** where you come in!
+As part of the Disease And Treatment Agency, division of Societal Cures In Epidemiology and New Creative Engineering (DATA-SCIENCE), we have been tasked to assess the viability of the current spray model, as well as to try and predict occurrence of West Nile Virus in Chicago, to help further refine the current pest management model.
+
+Mosquitoes enjoy wet and warm climates and are most active in temperatures above 80&deg;F. Conversely, when temperatures go below 50&deg;F, mosquitoes go dormant.
+
+The lifecycle for the Culex Pipiens, the most common species of mosquito caught in Chicago, typically range from 2-4 weeks, and even less than a week in the heat of summer.
+
+Our project will seek to:
+1. Determine the effectiveness of sprays on the mosquito population
+2. Predict the occurence of West Nile Virus
+3. Help provide guidelines by which to apply future sprays
 
 ## Contents
 * Data import, helper functions, cleaning and imputation of missing values
