@@ -119,6 +119,8 @@ When considering only fogging, the typical spray used in residential areas for c
 5. Pesticide
 * The assumption made is that the spray used is the most commonly use spray for fogging the air and targeting adult mosquitoes. However, standing pesticides can also be used in conjunction with air pesticides, targeting difficult to reach or difficult to clear areas with standing water to eliminate mosquito larvae. This would be a far more long-reaching solution, although constant re-application would be required through each rainfall. Therefore, consideration would have to be given according to the frequency of rainfall and the difficulty of application.
 
+## Recommendations
+
 In conclusion, there were no material benefit to the spraying of pesticides conducted in 2011 and 2013. Therefore, the [best and most economical way](https://www.cdc.gov/westnile/prevention/index.html) to prevent West Nile disease or any other mosquito-borne illness is to reduce the number of mosquitoes around your home and to take personal precautions to avoid mosquito bites. Precautions include:
 
 - When outdoors, apply insect repellent that contains DEET, picaridin, oil of lemon eucalyptus or IR 3535, according to label instructions.
