@@ -63,7 +63,7 @@ Based on the above, we assume the cost of spray to be USD $0.67 per acre multipl
 
 We assume we want to be aggressive and spray every week during the summer months of July, August and September based on our spray effectiveness analysis in the previous notebook, it would cost a total of USD $1,168,212.
 
-For this scenario, we would need to set aside a budget of about USD 580,000 to conduct the spraying exercises on an annual basis.
+For this scenario, we would need to set aside a budget of about USD $5,800,000 to conduct the spraying exercises on an annual basis.
 
 Medical Health Costs
 
