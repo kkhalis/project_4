@@ -2,21 +2,22 @@
 
 ## Problem Statement
 
-Due to the recent epidemic of West Nile Virus in the Windy City, the Department of Public Health set up a surveillance and control system to help collect data on mosquito numbers, presence of West Nile Virus for captured mosquitos, and weather events.
+Due to the recent epidemic of West Nile Virus in the Windy City, the Department of Public Health set up a surveillance and control system to help collect data on mosquito numbers, West Nile Virus appearance, and weather events.
 
 As part of the Disease And Treatment Agency, division of Societal Cures In Epidemiology and New Creative Engineering (DATA-SCIENCE), we have been tasked to assess the viability of the current spray model, as well as to try and predict occurrence of West Nile Virus in Chicago by training classifier models. This will further refine the current pest management model.
 
-Mosquitoes enjoy wet and warm climates and are most active in temperatures above 80&deg;F. Conversely, when temperatures go below 50&deg;F, mosquitoes go dormant.
+<a href = 'https://www.preventivepestcontrol.com/weather-affect-mosquito-activity/'> Mosquitoes enjoy wet and warm climates and are most active in temperatures above 80 degrees</a>. Conversely, when temperatures go below 50 degrees, mosquitoes go dormant.  
 
-The lifecycle for the Culex Pipiens, the most common species of mosquito caught in Chicago, typically range from 2-4 weeks, and even less than a week in the heat of summer.
+Mosquito lifecycles for Culex Pipiens, the most common mosquito caught in Chicago, <a href='https://www.in.gov/health/erc/zoonotic-and-vectorborne-epidemiology-entomology/pests/culex-species-mosquitoes/'>typically range from 2-4 weeks, and even less than a week in the heat of summer</a>.
 
 Our project will seek to:
+
 1. Determine the effectiveness of sprays on the mosquito population
-2. Predict the occurence of West Nile Virus
+2. Predict the occcurence of West Nile Virus
 3. Help provide guidelines by which to apply future sprays
 4. Conduct a cost benefit analysis on the use of the pesticides in response to the epidemic
 
-After training on the classifier models, the selection of the best model will be guided by the highest ROC-AUC score on the validation set.
+After training on the classifier models, the selection of the best model will be guided by the Precision, Recall, ROC-AUC and PR score on the validation set.
 
 ## Contents
 * Data import, helper functions, cleaning and imputation of missing values
