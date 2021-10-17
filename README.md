@@ -26,7 +26,17 @@ After training on the classifier models, the selection of the best model will be
 * Cost-Benefit Analysis and Conclusion
 
 ## Executive Summary
-TODO: Insert brief writeup on findings
+This project aims to find try and predict the presence of West Nile Virus within mosquitoes using various classification models, to assess the viability and effectiveness of the spray model employed in 2011 and 2013, and thereafter conduct a cost-benefit analysis on the use of sprays. 
+
+Initial analysis showed some columns with completely missing, or mostly trace data, such as `water1`, `depth` and `snowfall`. As number of mosquitoes per row were capped at 50, the records were summed up to get the total number of mosquitoes into 1 record. Imputation of missing values were done by adding the mean difference between both stations, to the station with available values.
+
+Presence of West Nile Virus were mostly found in Culex Pipiens and Culex Restuans species. There were notably higher numbers of mosquitoes caught when relating with certain weather phenomena, such as mist, drizzle or rain. Temperature correlating with specific times of the year were also found to promote the number mosquitoes caught. This suggests that the pooling of stagnant water sources after such weather conditions, in addition to temperatures during specific seasons of the year, contributed to increased breeding and growth of mosquitoes. 
+
+The spray data provided, however, did not prove to be very effective as the sprays were always conducted <b>after</b> the mosquitoes were caught. Although the traps are scattered and collected every week only from Monday through Wednesday, sprays, which are only effective on the day sprayed, were mostly conducted on Thursdays. Hence, they did not provide most correlation to the mosquito population post-spray.
+
+A few features were engineered additionally, such as the lag of days, ranking of traps based on mosquitoes caught, to improve predictive power for our classification models. The dataset is severely imbalanced due to only a small set of being present with West Nile Virus. We utilised SMOTE, a statisical technique which helps to increase the number of samples in a balanced way. Ultimately, the logistic regression classification model was found to have the best PR-AUC score, with a kaggle result of 0.71124.
+
+With regards to cost-benefit analysis and conclusions, please refer to their individual sections below.
 
 
 ## Dataset
@@ -48,55 +58,6 @@ You can also access the detailed description of weather info in the Data Diction
 Project Plan Documentation can be found [*here*](https://docs.google.com/spreadsheets/d/1_o3eWrHmSxif5hHflbAwt84u0uXwgWTV/edit#gid=540275792).
 
 ## Cost-Benefit Analysis
-
-### Costs
-
-1. Spraying
-
-- [Time of spray](https://www.chicago.gov/city/en/depts/cdph/provdrs/healthy_communities/news/2020/august/city-to-spray-insecticide-thursday-to-kill-mosquitoes.html): Weather permitting, the spraying will begin at dusk on August 13th and continue through the night until approximately 1:00 am, with licensed mosquito abatement technicians in trucks dispensing an ultra-low-volume spray. The material being used to control the adult mosquitoes, Zenivex.
-
-
-- [Spray rate of Zerivex](https://chicago.cbslocal.com/2017/08/30/spray-mosquitoes-far-south-side-west-nile-prevention/): The chemical used is Zenivex, applied at a rate of 1.5 fluid ounces per acre. That measure is approved by the U.S. EPA to control mosquitoes in outdoor residential and recreational areas.
-
-
-- [Zerivex cost per acre](file:///C:/Users/caspe/Downloads/Zenivex%20Cost%20Comparison%20Fact%20Sheet.pdf): USD0.67 per acre
-
-
-
-- Area of Chicago City: estimated to be 145,300 acres based on Google Search
-
-Based on the above, we assume the cost of spray to be USD $0.67 per acre multiplied by the area of Chicago city, which would be at USD $97,351. This accounts for 1 spraying exercise.
-
-We assume we want to be aggressive and spray every week during the summer months of July, August and September based on our spray effectiveness analysis in the previous notebook, it would cost a total of USD $1,168,212.
-
-For this scenario, we would need to set aside a budget of about USD $1,170,000 to conduct the spraying exercises on an annual basis.
-
-2. Medical Health Costs
-
-- Patients who were hospitalized with acute flaccid paralysis, a partial- to whole-body paralysis caused by WNV infection, had the largest initial and long-term medical costs ([median USD 25,000 and USD 22,000 respectively](https://www.sciencedaily.com/releases/2014/02/140210184713.htm)).
-
-
-- Number of [human WNV cases](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7241786/) in Chicago region (refer to Table 2): 24 in 2011 and 66 in 2013
-
-
-- The [CDC site](https://www.cdc.gov/westnile/index.html) shares that while there are no vaccines to prevent or medications to treat WNV in people, about 1 in 5 people who are infected develop a fever and other symptoms and about 1 out of 150 infected people develop a serious, sometimes fatal, illness.  
-
-
-### Benefits
-
-In a maximum benefit scenario, we assume that due to our aggressive spraying policy, no one contracted the virus.
-
-Conversely, in a scenario where the spray had not been used:
-
-Based on CDC's estimates (1 in 150 people require hospitalization), we assume that 1 person aged 60 and above had contracted the virus and developed a serious illness requiring to be hospitalized. The approximate [economic productivity loss](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3322011/) (referenced from Table 3 in the link) is calculated to be:
-
-The economic productivity loss of 1 person (aged 60 or above) hospitalized is estimated USD 7,500.
-
-We conclude that the prevention of economic productivity loss of USD 7,500 does not justify the spending of USD 1.17 million to spray pesticides.
-
-Based on the analysis above, there were <b>very little benefits</b> of the spraying in 2011 and 2013 due to the pathological nature of the WNV which we have studied so far. Furthermore, referencing back to our previous notebook on the spray data effectiveness analysis, the spray effectiveness is very sensitive to weather patterns.
-
-## Conclusion
 
 In effective pest management, one should consider the use of different spray types and effectiveness, as well as factors influencing the lifecycle of the pest.
 
@@ -120,15 +81,116 @@ When considering only fogging, the typical spray used in residential areas for c
 5. Pesticide
 * The assumption made is that the spray used is the most commonly use spray for fogging the air and targeting adult mosquitoes. However, standing pesticides can also be used in conjunction with air pesticides, targeting difficult to reach or difficult to clear areas with standing water to eliminate mosquito larvae. This would be a far more long-reaching solution, although constant re-application would be required through each rainfall. Therefore, consideration would have to be given according to the frequency of rainfall and the difficulty of application.
 
+### Model 1
+
+#### Costs
+
+1. Spraying
+
+- [Time of spray](https://www.chicago.gov/city/en/depts/cdph/provdrs/healthy_communities/news/2020/august/city-to-spray-insecticide-thursday-to-kill-mosquitoes.html): Weather permitting, the spraying will begin at dusk on August 13th and continue through the night until approximately 1:00 am, with licensed mosquito abatement technicians in trucks dispensing an ultra-low-volume spray. The material being used to control the adult mosquitoes, Zenivex.
+
+
+- [Spray rate of Zerivex](https://chicago.cbslocal.com/2017/08/30/spray-mosquitoes-far-south-side-west-nile-prevention/): The chemical used is Zenivex, applied at a rate of 1.5 fluid ounces per acre. That measure is approved by the U.S. EPA to control mosquitoes in outdoor residential and recreational areas.
+
+
+- [Zerivex cost per acre](https://www.centralmosquitocontrol.com/-/media/files/centralmosquitocontrol-na/us/resources-lit%20files/zenivex%20cost%20comparison%20fact%20sheet.pdf): USD0.67 per acre
+
+- Area of Chicago City: estimated to be 145,300 acres based on Google Search
+
+Based on the above, we assume the cost of spray to be USD 0.67 per acre multiplied by the area of Chicago city, which would be at USD $97,351. This accounts for 1 spraying exercise.
+
+If we assume the most aggressive spray strategy and spray every week during the summer months of July, August and September based on our spray effectiveness analysis, then the total cost can be calculated to be USD 1,168,212.
+
+For this scenario, we would need to set aside a budget of about USD 1.17 million to conduct the spraying exercises on an annual basis.
+
+2. Medical Health Costs
+
+- Patients who were hospitalized with acute flaccid paralysis, a partial- to whole-body paralysis caused by WNV infection, had the largest initial and long-term medical costs ([median USD 25,000 and USD 22,000 respectively](https://www.sciencedaily.com/releases/2014/02/140210184713.htm)).
+
+
+- Number of [human WNV cases](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7241786/) in Chicago region (refer to Table 2): 24 in 2011 and 66 in 2013
+
+
+- The [CDC site](https://www.cdc.gov/westnile/index.html) shares that while there are no vaccines to prevent or medications to treat WNV in people, about 1 in 5 people who are infected develop a fever and other symptoms and about 1 out of 150 infected people develop a serious, sometimes fatal, illness.  
+
+
+#### Benefits
+
+In a maximum benefit scenario, we assume that due to our aggressive spraying policy, no one contracted the virus.
+
+Conversely, in a scenario where the spray had not been used, we will use the following costs:
+
+Medical Health Costs - USD 60
+
+  - Number of [human WNV cases](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7241786/) in Chicago region will be taken as the average of cases from 2007-2014 (same as our dataset), without the years of 2011 and 2013, to determine maximal benefit against a programme with no spraying
+
+  - The [CDC estimates](https://www.sciencedaily.com/releases/2014/02/140210184713.htm):
+     - Roughly 4 out of 5 people are asymptomatic
+     - 1 in 5 people who are infected develop a fever, with a median medical cost of USD 7,500
+     - 1 in 150 infected people develop a serious, sometimes fatal, illness incurring long-term median medical costs of a total of USD 47,000.
+
+The medical costs for symptomatically mild to moderate cases are 60/5 * 7500 = USD 90000.0.
+The medical costs for symptomatically severe cases, rounding up, are USD 47000.
+
+The total medical costs are USD 137,000
+
+Productivity Loss
+
+Based on [NCBI(National Centre for Biotechnology Information)'s study in determining productivity loss of an individual](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3322011/) , we assume productivity loss to be (referenced from Table 3 in the link):
+
+For the symptomatically mild and moderate cases:
+- USD 955 for each individual, for a total of USD 11460
+
+
+For the hospitalised individual:
+- USD 10800, if the individual is under the age of 60
+
+Total productivity loss: USD 22260
+The economic loss to WNV can be calculated as USD 159,260.
+
+### Model 2
+
+In our second model, we look to target specific areas of the city, highly affected by the mosquitos, along with the following factors:
+
+- Spray Area: Spray Area imputed from the spray area of the 2011 spray block, an area roughly measuring 12.857 km^2, or 3177 acres.
+
+- Spray Times: Following the EDA done on the weather data set, alongside the features that were deemed to be of the highest importance in the logistic regression, we can see that spraying can be targeted to hit the life cycle of mosquitos immediately after periods that are:
+    1. At least 10 days after a light rain or mist event
+    2. On days where the degree day value is 7 or higher
+    
+Assuming this happens 3 times a month (Every 10 days of uninterupted sunshine following a rain event), and only in the months correlated with the highest number of cases (August, September), we can lower spray frequency to 6 times a year.
+
+Further, from our EDA, only 18 of the 64 blocks in the train set had WNV counts above 10 for the last 4 years, more than 2.5 cases per year per block.
+
+Therefore, we would restrict our spraying to only the regions that would benefit the most.
+
+At a rate of:
+* 6 sprays a year
+* For 18 blocks * 3177 acres * USD 0.67 per acre
+
+The total cost of Model 2 would be USD 229887.72
+
+At USD 230,000, this spray plan is remains higher than the loss estimated of USD 159,260.
+
 ## Recommendations
 
-In conclusion, there were no material benefit to the spraying of pesticides conducted in 2011 and 2013. Therefore, the [best and most economical way](https://www.cdc.gov/westnile/prevention/index.html) to prevent West Nile disease or any other mosquito-borne illness is to reduce the number of mosquitoes around your home and to take personal precautions to avoid mosquito bites. Precautions include:
+In conclusion, while a model that included indiscriminate spraying through Chicago did not show material benefit when compared to the cost, a model that was calculated based on initial features discovered during EDA and examined after modeling did product a spray plan that was more expensive than the economic loss estimated.
+
+This model was however based on a worst case scenario of 6 sprays. When adjusted by the weather for the year, it will likely reduce the reliance of such a high spray count. Further streamlining of the model could be done by looking at the month of June as a lead up, to help determine the severity of the mosquito population for the year.
+
+That said, the [best and most economical way](https://www.cdc.gov/westnile/prevention/index.html) to prevent West Nile disease or any other mosquito-borne illness is likely education of the populace, to reduce the number of mosquitoes. Precautions recommended by the CDC include:
 
 - When outdoors, apply insect repellent that contains DEET, picaridin, oil of lemon eucalyptus or IR 3535, according to label instructions.
 - Wear long-sleeved shirts and long pants when going out
 - Make sure doors and windows have tight-fitting screens. Repair or replace screens that have tears or other openings. Try to keep doors and windows shut, especially at night.
 - Eliminate sources of water-holding containers that can support mosquito breeding such as tires, buckets, planters, toys, pools, birdbaths, flowerpots, or trash containers
 - In communities where there are organized mosquito control programs, contact your municipal government to report areas of stagnant water in roadside ditches, flooded yards and similar locations that may produce mosquitoes.
+
+## Conclusion
+Some things to consider in a follow-up model or test sets, would include data on the following:
+- Use models with class weights. This will penalise the misclassifications made by the minority class by setting a higher class weight , and at the same time, reducing weight for the majority class. Penalising mistakes will put more emphasis on the misclassifed class.
+- Consider other approaches in dealing with imbalanced classification, such as ADASYN
+- Collect more data to balance classes within the dataset.
 
 
 Presentation slides can be found [*here*](https://docs.google.com/presentation/d/1mcq-PWQ7iOgGA75zJQiJCC4yx7CGViAl/edit?usp=sharing).
